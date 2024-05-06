@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000/api"
+const BASE_URL = "https://backend-qllu.onrender.com"
 
 export const authEndpoints = {
     SIGNUP_API: BASE_URL + "/auth/signup",
