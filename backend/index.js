@@ -13,10 +13,11 @@ app.use(cookieParser());
 
 app.use(cors({
     origin:"https://deployed-flipr.vercel.app",
-    credentials:true
+    credentials:true,
+    optionsSuccessStatus:200,
 }
 ));
-
+app.use(express.static(path.join(__dirname,"../frontend/build")));
 app.get("/",(req,res)=>{
     return res.json({
         success:true,
@@ -25,7 +26,14 @@ app.get("/",(req,res)=>{
 })
 app.use("/api/auth",authRoutes);
 app.use("/api/admin",adminRoutes);
-
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,"../frontend/build/index.html"))
+    
+    return res.json({
+        success:true,
+        message:"Your server is up and running...."
+    })
+})
 
 app.listen(PORT,()=>{
     connect();

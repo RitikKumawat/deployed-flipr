@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/" element={token!==null && user.role=="admin" ? <Home/> : <User/>}/>
+        <Route path="/" element={token!==null && user.role=="admin" ? <Home/> : <Login/>}/>
         <Route path="/databases" element={<PrivateRoute><Databases/></PrivateRoute>}/>
       </Routes>
     </>
